@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Prácticas de Ingeniería de Servidores</title>
+  <meta name="description" content="Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Prácticas de Ingeniería de Servidores" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Prácticas de Ingeniería de Servidores" />
+  
+  <meta name="twitter:description" content="Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20." />
+  
+
+<meta name="author" content="Alonso Bueno Herrero" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="literature.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="p1.html"><a href="p1.html"><i class="fa fa-check"></i><b>1</b> Instalación de servidores: <strong><em>Ubuntu Server</em></strong> y <strong><em>centOS</em></strong></a><ul>
+<li class="chapter" data-level="1.1" data-path="p1.html"><a href="p1.html#objetivos-de-la-práctica"><i class="fa fa-check"></i><b>1.1</b> Objetivos de la práctica</a></li>
+<li class="chapter" data-level="1.2" data-path="p1.html"><a href="p1.html#sesión-1-instalación-de-ubuntu-server-y-centos"><i class="fa fa-check"></i><b>1.2</b> Sesión 1: Instalación de Ubuntu Server y centOS</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="p1.html"><a href="p1.html#conceptos-básicos"><i class="fa fa-check"></i><b>1.2.1</b> Conceptos básicos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="p1.html"><a href="p1.html#proceso-de-instalación-de-ubuntu-server-16.04"><i class="fa fa-check"></i><b>1.2.2</b> Proceso de instalación de Ubuntu Server 16.04</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="p1.html"><a href="p1.html#sesión-2-ampliación-de-capacidad-para-un-usuario-en-el-servidor-centos."><i class="fa fa-check"></i><b>1.3</b> Sesión 2: Ampliación de capacidad para un usuario en el servidor <strong><em>centOS</em></strong>.</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="p1.html"><a href="p1.html#contextualización-del-escenario-profesional"><i class="fa fa-check"></i><b>1.3.1</b> Contextualización del escenario profesional</a></li>
+<li class="chapter" data-level="1.3.2" data-path="p1.html"><a href="p1.html#pasos-previos-instalación-de-centos"><i class="fa fa-check"></i><b>1.3.2</b> Pasos previos: instalación de <strong><em>centOS</em></strong></a></li>
+<li class="chapter" data-level="1.3.3" data-path="p1.html"><a href="p1.html#procedimiento"><i class="fa fa-check"></i><b>1.3.3</b> Procedimiento</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>4</b> Applications</a><ul>
+<li class="chapter" data-level="4.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>4.1</b> Example one</a></li>
+<li class="chapter" data-level="4.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>4.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>5</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Prácticas de Ingeniería de Servidores</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Prácticas de Ingeniería de Servidores</h1>
+<p class="author"><em>Alonso Bueno Herrero</em></p>
+<p class="date"><em>Curso 2019-20. Última modificación: 2021-03-24</em></p>
+</div>
+<div id="p1" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Instalación de servidores: <strong><em>Ubuntu Server</em></strong> y <strong><em>centOS</em></strong></h1>
+<div id="objetivos-de-la-práctica" class="section level2">
+<h2><span class="header-section-number">1.1</span> Objetivos de la práctica</h2>
+<p>Objetivos mínimos:</p>
+<ol style="list-style-type: decimal">
+<li>Familiarizarse con distintos Sistemas Operativos (SOs) usados en servidores.</li>
+<li>Conocer alternativas comerciales para tener un servidor.</li>
+<li>Configurar unidades de disco RAID y LVM.</li>
+<li>Configurar una red local de máquinas virtuales.</li>
+</ol>
+</div>
+<div id="sesión-1-instalación-de-ubuntu-server-y-centos" class="section level2">
+<h2><span class="header-section-number">1.2</span> Sesión 1: Instalación de Ubuntu Server y centOS</h2>
+<div id="conceptos-básicos" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Conceptos básicos</h3>
+<p>Repasamos los siguientes conceptos básicos que conviene conocer antes de iniciar las tareas de esta sesión:</p>
+<ol style="list-style-type: decimal">
+<li><p>Servidor, como un sistema informático que recibe peticiones y da respuestas a las mismas.</p></li>
+<li><p>Tecnología de servidores, distinguiendo:</p>
+<ol style="list-style-type: lower-alpha">
+<li><strong><em>Hosting</em></strong> dedicado:es una configuración de alojamiento en el que se dedica un servidor a una sola organización o para un solo propósito, como una página web. No escalable.</li>
+<li><strong><em>VPS</em></strong> (Virtual Private Server), donde varias MV comparten una serie de recursos hardware (Disco Duro, RAM, CPU, …).</li>
+<li><strong><em>Serverless</em></strong> (servicios en la nube), las aplicaciones montan ahí sus recursos y todas las tareas de administración de sistema están abstraídas para el usuario hasta el punto que él no tiene que preocuparse de las mismas. Es el modelo más actual por su alta capacidad de escalabilidad.</li>
+</ol></li>
+<li><p>Una tecnología de servidores basada en contenedores se caracteriza porque cada uno de estos contenedores se interpreta como una MV, sólo que cada una de esas MV son aplicaciones sobre el SO anfitrión, en tanto en cuanto:</p>
+<ul>
+<li>Los contenedores están (pueden estar) interconectados entre sí,</li>
+<li>Puedo añadir nuevos contenedores dinámicamente e ir conectándolos a otros que estén en activo (arrancados, funcionando).</li>
+</ul>
+<p>Un ejemplo es un servidor web donde un contenedor C1 contiene el motor web, otro C2 contiene la base de datos y el C3, que contendría el intérprete de peticiones web.</p></li>
+<li><p>La tecnología <em>RAID</em> surge como solución a la problemática del precio del almacenamiento. Las siglas se refieren a <strong><em>Redundant Array of Independent Disks</em></strong> (Almacén Redundante de Discos Independientes). Existen diversos tipos de tecnologías RAID, las más importantes son RAID-0 y RAID-1:</p>
+<ol style="list-style-type: lower-alpha">
+<li><em>RAID-0</em>. Un RAID-0 distribuye los datos equitativamente entre dos o más discos (usualmente se ocupa el mismo espacio en dos o más discos) sin información de paridad que proporcione redundancia. Es importante señalar que el RAID 0 no es redundante. Un RAID 0 puede ser creado con discos de diferentes tamaños, pero el espacio de almacenamiento añadido al conjunto estará limitado por el tamaño del disco más pequeño (por ejemplo, si se hace un conjunto dividido con un disco de 450 GB y otro de 100 GB, el tamaño del conjunto resultante será sólo de 200 GB, ya que cada disco aporta 100 GB).</li>
+<li>Un RAID 1 crea una copia exacta (o espejo) de un conjunto de datos en dos o más discos. Esto resulta útil cuando queremos tener más seguridad desaprovechando capacidad, ya que si perdemos un disco, tenemos el otro con la misma información. Un conjunto RAID 1 sólo puede ser tan grande como el más pequeño de sus discos. Un RAID 1 clásico consiste en dos discos en espejo, lo que incrementa exponencialmente la fiabilidad respecto a un solo disco; es decir, que para que el conjunto falle es necesario que lo hagan todos sus discos.</li>
+<li><strong>Ejercicio</strong> Busca información sobre los tipos de RAID siguientes: RAID-10, RAID-5 y RAID-6.</li>
+</ol></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="p1.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;images/raid0.png&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:rmarkdown"></span>
+<img src="images/raid0.png" alt="Configuración de RAID-0. Elaboración propia." width="90%" />
+<p class="caption">
+Figure 1.1: Configuración de RAID-0. Elaboración propia.
+</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>Sistema de archivos
+<ol style="list-style-type: lower-alpha">
+<li>Sistema de archivos <em>ext2</em>: principales características:
+<ul>
+<li>No admite Journaling</li>
+<li>Adecuado para tarjetas SD y unidades USB, ya que tiene un alto rendimiento y escritura baja (ya que el registro en diario no está disponible). USB y almacenamiento SD están limitados con ciclos de escritura por lo tanto su mejor ajuste para ellos.</li>
+<li>Límites: Tamaño de archivo individual de 16 GB a 2 TB.</li>
+<li>Tamaño del sistema de archivos de 2TB a 32TB.</li>
+</ul></li>
+<li>Sistema de archivos ext4
+<ul>
+<li>Soporta Journaling</li>
+<li>Muchas de las nuevas características introducidas. Extents, Compatibilidad con versiones anteriores, Pre-asignación persistente, Asignación diferida, Número ilimitado de subdirectorios, Suma de comprobación del diario, Comprobación FS más rápida, Encriptación transparente.</li>
+<li>Límites: Tamaño de archivo individual de 16GB a 16TB. Tamaño del sistema de archivos hasta 1EB.</li>
+<li>No es necesario actualizar el sistema de archivos. Debido a la compatibilidad hacia atrás, ext2, ext3 se puede montar directamente como ext4.</li>
+</ul></li>
+</ol></li>
+</ol>
+</div>
+<div id="proceso-de-instalación-de-ubuntu-server-16.04" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Proceso de instalación de Ubuntu Server 16.04</h3>
+</div>
+</div>
+<div id="sesión-2-ampliación-de-capacidad-para-un-usuario-en-el-servidor-centos." class="section level2">
+<h2><span class="header-section-number">1.3</span> Sesión 2: Ampliación de capacidad para un usuario en el servidor <strong><em>centOS</em></strong>.</h2>
+<p>En este caso, la idea es que, una vez instalado el servidor de centOS en el disco por defecto que nos crea VirtualBox, añadamos más capacidad a la “carpeta” de ese usuario concreto.</p>
+<p>Para estas operaciones habrá que tener en cuenta algunas consideraciones y delicadezas de centOS con respecto a Ubuntu. Pero ya las iremos viendo…</p>
+<div id="contextualización-del-escenario-profesional" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Contextualización del escenario profesional</h3>
+<p>El escenario profesional es el siguiente: En esta ocasión, en la empresa en la que le acaban de contratar tenían adquirido un servidor y su predecesor había realizado la instalación del S.O. CentOS, según le han comentado los compañeros, él solía hacer instalaciones por defecto y luego aplicar scripts de configuración. Sin más información, nuestro jefe nos informa que esa máquina va a alojar unos cursos con vídeos de alta calidad y relativamente largos. Por tanto, viendo la configuración del sistema, prevemos que /var necesitará más espacio, incluso es conveniente asignarle un LV exclusivamente. Para ello, incluiremos un nuevo disco y configuraremos LVM para que /var se monte en el nuevo VL que crearemos para él.</p>
+</div>
+<div id="pasos-previos-instalación-de-centos" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Pasos previos: instalación de <strong><em>centOS</em></strong></h3>
+<blockquote>
+<p>Recuerda que al instalar centOS hay que crear el usuario con su clave y darle permisos de administrador. Además tienes que establecer contraseña de root para poder hacer todo lo siguiente.</p>
+</blockquote>
+</div>
+<div id="procedimiento" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Procedimiento</h3>
+<p>Pasos a realizar:</p>
+<ol style="list-style-type: decimal">
+<li>Una vez hecha la instalación por defecto, y al iniciar sesión en el servidor, se nos proporciona el siguiente <em>sistema de particiones</em> sobre el único disco que tenemos, de 8 GB, que le habíamos proporcionado (ver figura <a href="p1.html#fig:a">1.2</a>).</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:a"></span>
+<img src="images/a.png" alt="Situación de particionado del primer disco tras instalar centOS con las opciones por defecto." width="60%" />
+<p class="caption">
+Figure 1.2: Situación de particionado del primer disco tras instalar centOS con las opciones por defecto.
+</p>
+</div>
+<p>Es decir, que el volumen físico <code>sda2</code>tiene 7GB y en él se ubica el VG llamado <code>cl</code>, donde están los volúmenes lógicos <code>root</code> (de 6,2 GB) y <code>swap</code> (de 820 MB).</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Añadamos el nuevo disco y configurémoslo para que <code>/var</code> tenga ese espacio extra (todo esto tiene detrás un proceso relativamente corto que iremos viendo).</li>
+</ol>
+<p>Por ahora, apagamos el ordenador (comando <code>poweroff</code>), añadimos el nuevo disco a nuestra Máquina Virtual y arrancamos. La situación tras añadir el nuevo disco “físico” y hacer <code>lsblk</code> es se ve en la figura <a href="p1.html#fig:b">1.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:b"></span>
+<img src="images/b.png" alt="Situación tras aña" width="60%" />
+<p class="caption">
+Figure 1.3: Situación tras aña
+</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li>Como vemos, aparece el disco <code>sdb</code>, que es el nuevo disco que hemos añadido, pero vemos que no tiene ningún PV (volumen físico) asociado, con lo cual es como si ese espacio lo tuviéramos inútil al completo. Comprobémoslo con la(s) orden(es) de LVM que nos informa(n) de los volúmenes físicos existentes en nuestro sistema: <code>pvdisplay</code> o de forma resumida, <code>pvs</code> (ver figura <a href="p1.html#fig:c">1.4</a>).</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:c"></span>
+<img src="images/c.png" alt="Mostrando los volúmenes físicos actuales. " width="60%" />
+<p class="caption">
+Figure 1.4: Mostrando los volúmenes físicos actuales.
+</p>
+</div>
+<pre><code>Y vemos que en efecto no refleja nada sobre el segundo disco creado. </code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Lo primero que vamos a hacer es definir el volumen físico asociado a ese nuevo disco, para ello usaremos el comando <code>pvcreate</code> (ver figura <a href="p1.html#fig:d">1.5</a>).</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:d"></span>
+<img src="images/d.png" alt="Creación del nuevo volumen físico `sdb` y comprobación de que se ha creado con la orden `pvs`." width="70%" />
+<p class="caption">
+Figure 1.5: Creación del nuevo volumen físico <code>sdb</code> y comprobación de que se ha creado con la orden <code>pvs</code>.
+</p>
+</div>
+<ol start="5" style="list-style-type: decimal">
+<li>Ahora hay que extender el Grupo de Volúmenes (VG) llamado <code>cl</code> con este nuevo volumen físico (recordemos la jerarquía de particiones y nomenclatura que establecía LVM) mediante la orden <code>vgextend</code>, y comprobamos que lo hemos hecho bien en la figura <a href="p1.html#fig:e">1.6</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:e"></span>
+<img src="images/e.png" alt="Extendiendo el grupo de volúmenes `cl` y comprobando que lo hemos hecho bien con el comando `vgs`." width="70%" />
+<p class="caption">
+Figure 1.6: Extendiendo el grupo de volúmenes <code>cl</code> y comprobando que lo hemos hecho bien con el comando <code>vgs</code>.
+</p>
+</div>
+<p>Y vemos que ya el campo <code>#PV</code> aparece con el valor <code>2</code>.</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Ahora vamos a <strong>crear el nuevo volumen lógico</strong> donde almacenar los datos que queremos, y que montaremos en <code>/var</code> (ver figura <a href="p1.html#fig:f">1.7</a>):</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:f"></span>
+<img src="images/f.png" alt="Creación del volumen lógico con la orden `lvcreate`." width="90%" />
+<p class="caption">
+Figure 1.7: Creación del volumen lógico con la orden <code>lvcreate</code>.
+</p>
+</div>
+<p>Y queda comprobado que se ha creado bien.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Ahora vamos a asignarle un <strong>sistema de ficheros</strong> mediante el comando <code>mkfs</code> con la opción <code>–t</code> para indicarle el tipo de Sistema de Archivos que le vamos a dar (en este caso, <em>ext4</em>), tal y como se muestra en la figura <a href="p1.html#fig:g">1.8</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:g"></span>
+<img src="images/g.png" alt="Asignando un sistema de archivos al nuevo volumen lógico." width="80%" />
+<p class="caption">
+Figure 1.8: Asignando un sistema de archivos al nuevo volumen lógico.
+</p>
+</div>
+<ol start="8" style="list-style-type: decimal">
+<li>A continuación, tenemos que <strong>montar el volumen lógico <code>newvar</code> para que esté accesible</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> sobre un punto de montaje que vamos a crearnos y que se va a llamar <code>/mnt/newvar</code>:</li>
+</ol>
+<pre class="shell"><code>mkdir /mnt/newvar                           # crear carpeta aux. ` 
+mount /dev/cl/newvar /mnt/newvar            # montar VL en aux.</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Vamos a comprobar que el montaje ha sido satisfactorio. Para ello volvemos a ejecutar <code>mount</code> pero sin ninguna opción (o bien con <code>$ mount | grep var</code>, para que marque en color donde está <code>/var</code>), y en la última línea debería aparecer nuestro dispositivo newvar montado sobre <code>/mnt/newvar</code>, tal y como se muestra en la figura <a href="p1.html#fig:h">1.9</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:h"></span>
+<img src="images/h.png" alt="Fragmento (inicio y fin) de la orden `mount` tras montar newvar sobre el directorio auxiliar `/mnt/newvar` recién creado." width="80%" />
+<p class="caption">
+Figure 1.9: Fragmento (inicio y fin) de la orden <code>mount</code> tras montar newvar sobre el directorio auxiliar <code>/mnt/newvar</code> recién creado.
+</p>
+</div>
+<ol start="10" style="list-style-type: decimal">
+<li>Ahora habría que copiar el contenido de /var, que es lo que queremos ampliar, en <code>/mnt/newvar</code>. Pero para evitar que otros usuarios hagan operaciones <em>r/w</em> mientras se hace esto, vamos a hacerlo de manera atómica, usando el modo <strong>AISLADO</strong>. Para ello, ejecutamos el comando</li>
+</ol>
+<pre class="shell"><code>systemctl isolate runlevel1.target</code></pre>
+<p>y tras autenticarnos (con usuario <code>root</code>) debe de aparecer lo mismo que en la figura <a href="p1.html#fig:i">1.10</a></p>
+<div class="figure" style="text-align: center"><span id="fig:i"></span>
+<img src="images/i.png" alt="Aspecto inicial del modo de mantenimiento (modo aislado)." width="80%" />
+<p class="caption">
+Figure 1.10: Aspecto inicial del modo de mantenimiento (modo aislado).
+</p>
+</div>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Una analogía para recordar por qué montar un volumen: cuando conectamos una unidad de almacenamiento o un lector de DVD, el sistema tiene que crearle lo que se denomina un punto de montaje para poderlo utilizar. Este punto de montaje en casos de discos duros y pendrive’s, suele ser una carpeta que creamos manualmente en el sistema o nos lo crea él mismo automáticamente en una partición denominada <code>/media</code> en distribuciones basadas en Ubuntu. En nuestro caso, directamente las montamos sobre <code>/mnt/&lt;dir_pto_montaje&gt;</code>.<a href="p1.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="literature.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["PracticasSO.pdf", "PracticasSO.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
