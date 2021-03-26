@@ -8,6 +8,13 @@ fig:f
 fig:g
 fig:h
 fig:i
+fig:j
+fig:k
+fig:l
+fig:1h
+fig:2h
+fig:3h
+fig:4h
 p1
 objetivos-de-la-práctica
 sesión-1-instalación-de-ubuntu-server-y-centos
@@ -17,6 +24,10 @@ sesión-2-ampliación-de-capacidad-para-un-usuario-en-el-servidor-centos.
 contextualización-del-escenario-profesional
 pasos-previos-instalación-de-centos
 procedimiento
+sesión-3-ampliación-cifrada-y-redundante-de-la-capacidad-para-un-usuario.
+contextualización-del-escenario-profesional-1
+qué-necesitamos
+pasos-para-la-realización-de-la-práctica
 literature
 methods
 applications

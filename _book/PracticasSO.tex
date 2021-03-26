@@ -41,46 +41,6 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -113,7 +73,7 @@
 
 \title{Prácticas de Ingeniería de Servidores}
 \author{Alonso Bueno Herrero}
-\date{Curso 2019-20. Última modificación: 2021-03-24}
+\date{Curso 2019-20. Última modificación: 2021-03-25}
 
 \begin{document}
 \maketitle
@@ -194,12 +154,6 @@ Repasamos los siguientes conceptos básicos que conviene conocer antes de inicia
     \textbf{Ejercicio} Busca información sobre los tipos de RAID siguientes: RAID-10, RAID-5 y RAID-6.
   \end{enumerate}
 \end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/raid0.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{figure}
 
@@ -332,9 +286,7 @@ Por ahora, apagamos el ordenador (comando \texttt{poweroff}), añadimos el nuevo
 \caption{Mostrando los volúmenes físicos actuales. }\label{fig:c}
 \end{figure}
 
-\begin{verbatim}
-Y vemos que en efecto no refleja nada sobre el segundo disco creado. 
-\end{verbatim}
+Y vemos que en efecto no refleja nada sobre el segundo disco creado.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -443,14 +395,8 @@ mount /dev/cl/newvar /mnt/newvar            # montar VL en aux.
 \setcounter{enumi}{9}
 \tightlist
 \item
-  Ahora habría que copiar el contenido de /var, que es lo que queremos ampliar, en \texttt{/mnt/newvar}. Pero para evitar que otros usuarios hagan operaciones \emph{r/w} mientras se hace esto, vamos a hacerlo de manera atómica, usando el modo \textbf{AISLADO}. Para ello, ejecutamos el comando
+  Ahora habría que copiar el contenido de /var, que es lo que queremos ampliar, en \texttt{/mnt/newvar}. Pero para evitar que otros usuarios hagan operaciones \emph{r/w} mientras se hace esto, vamos a hacerlo de manera atómica, usando el modo \textbf{AISLADO}. Para ello, ejecutamos el comando \texttt{systemctl\ isolate\ runlevel1.target}, y tras autenticarnos (con usuario \texttt{root}) debe de aparecer lo mismo que en la figura \ref{fig:i}.
 \end{enumerate}
-
-\begin{verbatim}
-systemctl isolate runlevel1.target
-\end{verbatim}
-
-y tras autenticarnos (con usuario \texttt{root}) debe de aparecer lo mismo que en la figura \ref{fig:i}
 
 \begin{figure}
 
@@ -459,6 +405,162 @@ y tras autenticarnos (con usuario \texttt{root}) debe de aparecer lo mismo que e
 }
 
 \caption{Aspecto inicial del modo de mantenimiento (modo aislado).}\label{fig:i}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Ahora vamos a lo que queríamos hacer: copiar de \texttt{/var} a \texttt{/mnt/newvar}. Lo haremos (ver figura \ref{fig:j}) con \texttt{cp}, obviamente, y con la opción \texttt{–a} (para corregir errores de contexto de SELinux) y seleccionando \texttt{/var/.} (el detalle es el punto tras el \texttt{/var}, que indica que \emph{copie todo lo que haya, de manera recursiva y los ficheros ocultos incluidos}). Y lo comparamos con lo que hay en \texttt{/var} ejecutando: \texttt{\textgreater{}\ ls\ –lhaZ\ /var} y vemos que hay exactamente lo mismo, lo cual indica que hemos procedido correctamente.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{images/j} 
+
+}
+
+\caption{Paso importante: copiando todo el contenido de `/var` a `/mnt/newvar` y comprobación con `ls`.}\label{fig:j}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{11}
+\tightlist
+\item
+  Ahora falta decirle al sistema lo más importante: que cada vez que arranque, monte el volumen lógico \texttt{newvar} en \texttt{/var}, para que dicho cliente pueda seguir accediendo a \texttt{/var} de manera transparente a dónde estén sus archivos. Este es un paso delicado donde hay que modificar un archivo del sistema, el \texttt{/etc/fstab}, que da información sobre el montaje de dispositivos y particiones al arranque del Sistema Operativo. Lo haremos con extremo cuidado, usando el editor \texttt{vi} y en modo \textbf{root}.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi}.}
+\item
+  abrir el fichero \texttt{/etc/fstab} con \texttt{vi} usando la orden:
+
+\begin{verbatim}
+> vi /etc/fstab       # estando en modo root
+\end{verbatim}
+\item
+  pulsamos la tecla \texttt{i} del teclado para acceder al modo de escritura,
+\item
+  vamos al final del fichero, insertamos una nueva línea (nos colocamos \textbf{al final} de la última línea y pulsamos \emph{Enter}),
+\item
+  insertamos en la nueva línea el siguiente contenido:
+\end{enumerate}
+
+\begin{verbatim}
+/dev/cl/newvarTABULADOR/varTABULADORext4TABULADORdefaultsTABULADOR0TABULADOR0
+\end{verbatim}
+
+donde la palabra \texttt{TABULADOR} indica que en ese lugar pulsemos la tecla de tabulador una sola vez.
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{21}
+\tightlist
+\item
+  tras repasar lo escrito y asegurarnos de que lo hemos escrito correctamente, pulsamos la tecla \texttt{Esc} para salir del modo de escritura y tecleamos en la línea de órdenes de la parte inferior de la pantalla que ofrece \texttt{vi} el literal \texttt{:wq} para guardar los cambios en el fichero (\texttt{w}) y salir (\texttt{q}).
+\end{enumerate}
+
+El aspecto final de \texttt{/etc/fstab} será el de la figura \ref{fig:k}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/k} 
+
+}
+
+\caption{Estado final de `/etc/fstab` tras las modificaciones oportunas.}\label{fig:k}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{12}
+\tightlist
+\item
+  Ahora vamos a desmontar cosas para evitar errores:
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii}.}
+  \tightlist
+  \item
+    desmontar /mnt/newvar,
+  \item
+    y es posible que haga falta: desmontar /dev/cl/newvar
+  \end{enumerate}
+\end{enumerate}
+
+Y ahora, mover \texttt{/var} a un directorio auxiliar llamado \texttt{/varold} (o el nombre que queramos) para evitar posibles errores. Ahora vamos a crear un nuevo \texttt{/var} mediante la orden \texttt{mkdir\ /var}, y le asignaremos un contexto a esa nueva carpeta con el comando de la figura \ref{fig:l}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{13}
+\tightlist
+\item
+  Ahora ya está todo hecho, sólo falta reiniciar la máquina y comprobar con \texttt{ls\ –lhaZ} que tanto \texttt{/var} como \texttt{/varold} tienen exactamente el mismo contenido.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/l} 
+
+}
+
+\caption{Restaurar el contexto del nuevo directorio `/var`, donde montaremos nuestro nuevo disco `/dev/cl/newvar`.}\label{fig:l}
+\end{figure}
+
+\hypertarget{sesiuxf3n-3-ampliaciuxf3n-cifrada-y-redundante-de-la-capacidad-para-un-usuario.}{%
+\section{Sesión 3: Ampliación cifrada y redundante de la capacidad para un usuario.}\label{sesiuxf3n-3-ampliaciuxf3n-cifrada-y-redundante-de-la-capacidad-para-un-usuario.}}
+
+Este caso es una versión ``mejorada'' de la Sesión 2, pero hay que realizarla partiendo \emph{desde cero}, es decir, tras haber instalado centOS únicamente.
+
+\begin{quote}
+RECUERDA que esta sesión se realizará sobre una máquina virtual sobre la que NO se haya implementado lo realizado en la Sesión 2.
+\end{quote}
+
+\hypertarget{contextualizaciuxf3n-del-escenario-profesional-1}{%
+\subsection{Contextualización del escenario profesional}\label{contextualizaciuxf3n-del-escenario-profesional-1}}
+
+Tras ver el éxito de los vídeos alojados en el servidor configurado en la práctica anterior, un amigo de su cliente quiere proceder del mismo modo pero va a necesitar alojar información sensible así que le pide explícitamente que cifre la información y que ésta esté siempre disponible. Por tanto, la decisión que toma es configurar un RAID1 por software y cifrar el VL en el que /var estará alojado.
+
+\hypertarget{quuxe9-necesitamos}{%
+\subsection{¿Qué necesitamos?}\label{quuxe9-necesitamos}}
+
+Aparte de lo mencionado antes sobre el Sistema Operativo y su estado, vamos a tener que crear dos discos extra, que serán los que conformen el RAID, uno de ellos tendrá el contenido exacto del otro (política de RAID1).
+
+\hypertarget{pasos-para-la-realizaciuxf3n-de-la-pruxe1ctica}{%
+\subsection{Pasos para la realización de la práctica}\label{pasos-para-la-realizaciuxf3n-de-la-pruxe1ctica}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Partimos inicialmente del estado original de centOS (puede estar la red configurada, no hay problema con eso) de la figura \ref{fig:}.
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/1} 
+
+}
+
+\caption{Estado inicial antes de crear el RAID-1.}\label{fig:1}
+\end{figure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Entonces, vamos a apagar el sistema, añadimos los dos discos y reiniciamos. Lo que nos muestra ahora \texttt{lsblk} es lo siguiente (figura \ref{fig:2}):
+\end{enumerate}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{images/2} 
+
+}
+
 \end{figure}
 
 \hypertarget{literature}{%
