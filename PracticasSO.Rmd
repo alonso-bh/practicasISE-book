@@ -1,3 +1,19 @@
+--- 
+title: "Prácticas de Ingeniería de Servidores"
+author: "Alonso Bueno Herrero"
+date: "Curso 2019-20. Última modificación: `r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20. "
+---
+
+
+
+<!--chapter:end:index.Rmd-->
+
 
 # Instalación de servidores: ***Ubuntu Server*** y ***centOS*** {#p1}
 
@@ -308,4 +324,41 @@ knitr::include_graphics("images/9.png")
 knitr::include_graphics("images/10.png")
 ```
 
+
+
+<!--chapter:end:01-practica1.Rmd-->
+
+# Literature
+
+Here is a review of existing methods.
+
+<!--chapter:end:02-literature.Rmd-->
+
+# Methods
+
+We describe our methods in this chapter.
+
+<!--chapter:end:03-method.Rmd-->
+
+# Applications
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Example one
+
+## Example two
+
+<!--chapter:end:04-application.Rmd-->
+
+# Final Words
+
+We have finished a nice book.
+
+<!--chapter:end:05-summary.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
 

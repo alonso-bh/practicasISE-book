@@ -119,7 +119,7 @@
 <div id="header">
 <h1 class="title">Prácticas de Ingeniería de Servidores</h1>
 <p class="author"><em>Alonso Bueno Herrero</em></p>
-<p class="date"><em>Curso 2019-20. Última modificación: 2021-03-25</em></p>
+<p class="date"><em>Curso 2019-20. Última modificación: 2021-04-01</em></p>
 </div>
 <div id="p1" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Instalación de servidores: <strong><em>Ubuntu Server</em></strong> y <strong><em>centOS</em></strong></h1>
@@ -329,15 +329,13 @@ Figure 1.12: Estado final de <code>/etc/fstab</code> tras las modificaciones opo
 </p>
 </div>
 <ol start="13" style="list-style-type: decimal">
-<li>Ahora vamos a desmontar cosas para evitar errores:
+<li><p>Desmontamos, para evitar posibles errores:</p>
 <ol style="list-style-type: lower-roman">
 <li>desmontar /mnt/newvar,</li>
 <li>y es posible que haga falta: desmontar /dev/cl/newvar</li>
 </ol></li>
-</ol>
-<p>Y ahora, mover <code>/var</code> a un directorio auxiliar llamado <code>/varold</code> (o el nombre que queramos) para evitar posibles errores. Ahora vamos a crear un nuevo <code>/var</code> mediante la orden <code>mkdir /var</code>, y le asignaremos un contexto a esa nueva carpeta con el comando de la figura <a href="p1.html#fig:l">1.13</a>.</p>
-<ol start="14" style="list-style-type: decimal">
-<li>Ahora ya está todo hecho, sólo falta reiniciar la máquina y comprobar con <code>ls –lhaZ</code> que tanto <code>/var</code> como <code>/varold</code> tienen exactamente el mismo contenido.</li>
+<li><p>Ahora, mover <code>/var</code> a un directorio auxiliar llamado <code>/varold</code> (o el nombre que queramos) para evitar posibles errores. Ahora vamos a crear un nuevo <code>/var</code> mediante la orden <code>mkdir /var</code>, y le asignaremos un contexto a esa nueva carpeta con el comando de la figura <a href="p1.html#fig:l">1.13</a>.</p></li>
+<li><p>Ahora ya está todo hecho, sólo falta reiniciar la máquina y comprobar con <code>ls –lhaZ</code> que tanto <code>/var</code> como <code>/varold</code> tienen exactamente el mismo contenido.</p></li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:l"></span>
 <img src="images/l.png" alt="Restaurar el contexto del nuevo directorio `/var`, donde montaremos nuestro nuevo disco `/dev/cl/newvar`." width="95%" />
@@ -397,8 +395,65 @@ Figure 1.17: Comando <code>lsblk</code> tras crear dos discos vírgenes.
 </p>
 </div>
 <ol start="4" style="list-style-type: decimal">
-<li></li>
+<li><p>Tras conectarnos setisfactoriamente a Internet, ahora ya podremos instalar el gestor de RAID con el comando <code>&gt; yum install mdadm</code>, decimos que sí a todo (opción <code>y</code>) y se instalará.</p></li>
+<li><p><strong>Creación del RAID-1</strong>. Para crearlo correctamente y con las opciones que queramos habría que mirar el manual en línea de <code>mdadm</code>. Tras el correspondiente estudio, las opciones que más nos convienen se muestran en la orden de la figura <a href="p1.html#fig:5h">1.18</a>.</p></li>
 </ol>
+<div class="figure" style="text-align: center"><span id="fig:5h"></span>
+<img src="images/5.png" alt="Creando el RAID-1 a partir de los discos `sdb` y `sdc`." width="95%" />
+<p class="caption">
+Figure 1.18: Creando el RAID-1 a partir de los discos <code>sdb</code> y <code>sdc</code>.
+</p>
+</div>
+<ol start="6" style="list-style-type: decimal">
+<li>El comando <code>lsblk</code> nos muestra si hemos creado correctamente el RAID-1 (ver figura <a href="p1.html#fig:6h">1.19</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:6h"></span>
+<img src="images/6.png" alt="Resultado del comando `lsblk` tras crear el RAID-1." width="75%" />
+<p class="caption">
+Figure 1.19: Resultado del comando <code>lsblk</code> tras crear el RAID-1.
+</p>
+</div>
+<ol start="7" style="list-style-type: decimal">
+<li>Ahora creamos el volumen físico que podemos llamar <code>newvar</code> y que servirá de base para el grupo de volúmenes del RAID con la orden <code>pvcreate /dev/md0</code> y comprobamos que se ha creado correctamente como ya sabemos.</li>
+<li>Creamos el grupo de volúmenes con <code>vgcreate pmraid1 /dev/md0</code>. Después creamos el volumen <strong>lógico</strong> (que se duplicará mediante la técnica RAID) de 1 GB de tamaño con: <code>lvcreate –L 1G –n newvar pmraid1</code>. Veamos cómo va todo con <code>pvs</code>, <code>vgs</code> y <code>lvs</code>, cuyas salidas se muestran en la figura <a href="p1.html#fig:7h">1.20</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:7h"></span>
+<img src="images/7.png" alt="Estado tras crear el volumen lógico `newvar`." width="95%" />
+<p class="caption">
+Figure 1.20: Estado tras crear el volumen lógico <code>newvar</code>.
+</p>
+</div>
+<ol start="9" style="list-style-type: decimal">
+<li>En este punto, recordemos cuál era nuestro objetivo: crear una nueva unidad lógica <strong>redundante</strong> y <strong>encriptada</strong>. Solo nos falta la encriptación. Esto lo haremos con el comando <code>cryptsetup</code> y algunas opciones del mismo. Lo primero, vamos a instalarlo con <code>yum install cryptsetup</code> (esto no debe dar errores). Ahora entraremos en modo aislado con <code>% systemctl isolate runlevel1.target</code>, y ahí ejecutamos los siguientes comandos, en el orden dado (figura <a href="p1.html#fig:8h">1.21</a>).</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:8h"></span>
+<img src="images/8.png" alt="Resultado de la encriptación." width="95%" />
+<p class="caption">
+Figure 1.21: Resultado de la encriptación.
+</p>
+</div>
+<ol start="10" style="list-style-type: decimal">
+<li>¿Qué ha pasado? Que hemos encriptado satisfactoriamente el volumen <code>newvar</code>, pero la zona encriptada dentro de ese volumen no está abierta (<em>accesible</em>), y entonces <code>lsblk</code> no lo reconoce. Abrámoslo con el comando siguiente, asignémosle un nombre que nos ayude a identificarlo (<code>pmraid1-newvar_crypt</code>), y después <code>lsblk</code> ya lo conocerá. Lo vemos en la figura <a href="p1.html#fig:9h">1.22</a>.</li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:9h"></span>
+<img src="images/9.png" alt="Resultado de abrir la zona encriptada del volumen. Mostramos el resultado con `lsblk`, donde ya aparece ese volumen encriptado con el nombre que le hemos puesto en el comando." width="95%" />
+<p class="caption">
+Figure 1.22: Resultado de abrir la zona encriptada del volumen. Mostramos el resultado con <code>lsblk</code>, donde ya aparece ese volumen encriptado con el nombre que le hemos puesto en el comando.
+</p>
+</div>
+<ol start="11" style="list-style-type: decimal">
+<li>Ahora quedan tareas que ya conocemos (salvo una que veremos después):
+<ol style="list-style-type: lower-roman">
+<li>vamos a asignar un sistema de archivos a ese volumen encriptado (que no al “newvar” a secas) con el comando <code>mkfs –t ext4 /dev/mapper/pmraid1-newvar_crypt</code>;</li>
+<li>ahora lo montamos en un directorio auxiliar de <code>/mnt</code>, por ejemplo <code>/mnt/varcifr</code>, y le copiamos todos los archivos. Veamos estas operaciones ejecutadas (ver figura <a href="p1.html#fig:10h">1.23</a>):</li>
+</ol></li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:10h"></span>
+<img src="images/10.png" alt="Operaciones de montaje del dispositivo cifrado para copiarle los archivos en un punto de montaje temporal. Todos los pasos se van comprobando." width="95%" />
+<p class="caption">
+Figure 1.23: Operaciones de montaje del dispositivo cifrado para copiarle los archivos en un punto de montaje temporal. Todos los pasos se van comprobando.
+</p>
+</div>
 
 </div>
 </div>
