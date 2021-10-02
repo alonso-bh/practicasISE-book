@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 5 Final Words | Prácticas de Ingeniería de Servidores</title>
+  <title>Capítulo 3 Monitorización y automatización de tareas | Prácticas de Ingeniería de Servidores</title>
   <meta name="description" content="Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 5 Final Words | Prácticas de Ingeniería de Servidores" />
+  <meta property="og:title" content="Capítulo 3 Monitorización y automatización de tareas | Prácticas de Ingeniería de Servidores" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 5 Final Words | Prácticas de Ingeniería de Servidores" />
+  <meta name="twitter:title" content="Capítulo 3 Monitorización y automatización de tareas | Prácticas de Ingeniería de Servidores" />
   
   <meta name="twitter:description" content="Desarrollo de las prácticas de la asignatura Ingeniería de Servidores (ISE) del Grado en Ingeniería Informática de la Universidad de Granada, para el curso 2019-20." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="benchmarking-y-ajuste-del-sistema-profiling.html"/>
-<link rel="next" href="references.html"/>
+<link rel="prev" href="instalación-y-configuración-de-servicios.html"/>
+<link rel="next" href="benchmarking-y-ajuste-del-sistema-profiling.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -126,18 +126,108 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-words" class="section level1">
-<h1><span class="header-section-number">Capítulo 5</span> Final Words</h1>
-<p>We have finished a nice book.</p>
+<div id="monitorización-y-automatización-de-tareas" class="section level1">
+<h1><span class="header-section-number">Capítulo 3</span> Monitorización y automatización de tareas</h1>
+<div id="objetivos" class="section level2">
+<h2><span class="header-section-number">3.1</span> Objetivos</h2>
+<ol style="list-style-type: decimal">
+<li>Conocer y saber usar las herramientas que permitan obtener datos sobre el sistema a nivel hardware y software (SO y servicios).</li>
+<li>Saber interpretar los resultados proporcionados por las aplicaciones de monitorización.</li>
+<li>Conocer los archivos que proporcionan información del sistema.</li>
+<li>Tener conocimiento básico sobre automatización y orquestación</li>
+<li>Ser capaz de utilizar y configurar un monitor de sistema</li>
+</ol>
+</div>
+<div id="introducción" class="section level2">
+<h2><span class="header-section-number">3.2</span> Introducción</h2>
+<p>El guión de prácticas asociado a este documento contiene una información interesante, que además es materia &lt;<de examen>&gt; sobre los monitores disponibles, su clasificación, además de algunos temas muy interesantes sobre Automatización y Profiling del sistema.</p>
+<p>En el presente documento nos centraremos en resolver las tareas evaluables propuestas para esta práctica: monitorización con Zabbix y automatización básica de tareas con Ansible.</p>
+</div>
+<div id="sesión-1ª-automatización-básica-de-tareas-con-ansible" class="section level2">
+<h2><span class="header-section-number">3.3</span> Sesión 1ª: Automatización básica de tareas con Ansible</h2>
+<div id="introducción-a-la-orquestación-con-ansible" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Introducción a la orquestación con Ansible</h3>
+<p>En el guión oficial de esta práctica se indicaban varias herramientas para la automatización de tareas. Una de ellas, que actúa a nivel de plataforma es Ansible.</p>
+<p>Ansible es un software que automatiza el <strong>aprovisionamiento</strong> de <em>software</em>, la gestión de configuraciones y el despliegue de aplicaciones. Está categorizado como una herramienta de <em>orquestación</em>, muy útil para los administradores de sistema y DevOps<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<p>En otras palabras,</p>
+<blockquote>
+<p>Ansible permite a los <em>DevOps</em> gestionar sus servidores, configuraciones y aplicaciones de forma sencilla, robusta y concurrente.</p>
+</blockquote>
+<p>Además, gestiona nodos a través de SSH y no requiere ningún software remoto adicional (excepto Python 2.4 o posterior para instalarlo)".</p>
+<p>En definitiva, hablamos de una herramienta para:
+- automatizar tareas,
+- provisional, y
+- orquestar servicios (a esto nos dedicaremos a continuación).</p>
+</div>
+<div id="pruebas-sobre-nuestras-máquinas-virtuales" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Pruebas sobre nuestras máquinas virtuales</h3>
+<p>Para realizar las pruebas podemos usar las dos máquinas virtuales que tenemos: Ubuntu y centOS. Basta con ejecutar los comandos en una máquina apropiadamente para que se ejecute en la otra, logrando la comunicación entre ambos.</p>
+<p>Para la prueba no hace falta iniciar sesión en la máquina virtual que recibirá las órdenes de ejecución; sólo habrá que hacerlo donde vayamos a lanzar los comandos.</p>
+<div id="instalar-ansible-en-ubuntu" class="section level4">
+<h4><span class="header-section-number">3.3.2.1</span> Instalar Ansible en Ubuntu</h4>
+<p>Vamos a instalar <em>Ansible</em> usando el gestor de paquetes <em>apt</em>:</p>
+<pre class="shell"><code>sudo apt install ansible</code></pre>
+</div>
+<div id="creación-de-grupos-receptores-de-tareas" class="section level4">
+<h4><span class="header-section-number">3.3.2.2</span> Creación de grupos <em>receptores</em> de tareas:</h4>
+<p>En el fichero <code>/etc/ansible/hosts</code> se pueden definir los <em>receptores</em> y grupos de los mismos de las tareas que vayamos a lanzar con Ansible.</p>
+<p>Para definir un grupo de destinos basta con indicar un nombre de referencia entre corchetes, y debajo, en cada línea, el formato <code>IP:PUERTO</code> del host destino. Un formato válido para un grupo básico sería:</p>
+<pre class="shell"><code>[UbuntuServer]
+192.168.56.105:22022
+[centOSServer]
+192.168.56.110:22022</code></pre>
+<p>en en el caso de que quisiéramos un grupo para cada servidor (un grupo para el servidor <em>Ubuntu</em> y otro grupo para el de <em>centOS</em>).</p>
+</div>
+<div id="lanzar-tareas-desde-linux-anfitrión-o-máquina-virtual" class="section level4">
+<h4><span class="header-section-number">3.3.2.3</span> Lanzar tareas desde Linux (anfitrión o máquina virtual)</h4>
+<p>Mandar la orden de hacer <code>ping</code> a todos los grupos de servidores que hayamos definido en el fichero <code>/etc/ansible/hosts</code>:</p>
+<pre class="shell"><code>ansible all -m ping  # all = mandar a todos los grupos</code></pre>
+<p>Es posible que nos dé un error, debido a problemas con la clave público-privada. Podemos solucionar este problema generando una clave con la orden</p>
+<pre class="shell"><code>ssh-keygen</code></pre>
+<p>y se generan las claves (pública y privada)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> en el fichero <code>.ssh/</code> (carpeta oculta en el directorio actual).</p>
+<p>Ahora nos falta enviar la clave a los destinatarios uno a uno con</p>
+<pre class="shell"><code>ssh-copy-id IP -p PUERTO</code></pre>
+<p>Si volvemos a ejecutar el comando <code>ansible</code>, puede que nos vuelva a dar un error relacionado con Python. Lo podemos solucionar instalándolo con:</p>
+<pre class="shell"><code>sudo apt install python       # suponiendo que estamos en Ubuntu
+apt update                    # actualizar repositorios</code></pre>
+<p>Ahora volvemos a ejecutar el comando.</p>
+</div>
+<div id="lanzar-tareas-desde-nuestra-máquina-nativa-windows" class="section level4">
+<h4><span class="header-section-number">3.3.2.4</span> Lanzar tareas desde nuestra máquina nativa Windows</h4>
+<p>Basta con ejecutar el comando:</p>
+<pre class="shell"><code>ansible all -a &quot;ls /&quot; -m command</code></pre>
+<p>si queremos enviar esa orden a todos los grupos, o</p>
+<pre class="shell"><code>ansible NOMBRE_GRUPO &quot;ls /&quot; -m command</code></pre>
+</div>
+</div>
+</div>
+<div id="sesión-2ª-monitorización-con-zabbix" class="section level2">
+<h2><span class="header-section-number">3.4</span> Sesión 2ª: Monitorización con <em>Zabbix</em></h2>
+<div id="objetivos-y-presentación" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Objetivos y presentación</h3>
+<p>En esta sección se presenta un guión sobre la instalación y configuración del monitor Zabbix en Ubuntu y centOS, incluyendo un front-end para poder acceder a la monitorización a través de un navegador. El servidor Ubuntu será el protagonista de la coordinación de las tareas de monitorización de ambos sistemas operativos (a sí mismo y a centOS), de tal forma que:</p>
+<ul>
+<li>En Ubuntu Server instalaremos el  (tareas a “bajo nivel” de recopilación de datos), el  (para la monitorización) y el  (que controla la monitorización de ambos servidores).</li>
+<li>En centOS instalaremos únicamente el , para recopilar datos que serán luego usados y formateados por el servidor.</li>
+</ul>
 
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>DevOps es una metodología de desarrollo de <em>software</em> basada en la integración entre desarrolladores <em>software</em> y administradores de sistemas<a href="monitorización-y-automatización-de-tareas.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Refresca los conocimientos sobre criptografía necesarios para las prácticas en el documento asociado a la Práctica 2.<a href="monitorización-y-automatización-de-tareas.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="benchmarking-y-ajuste-del-sistema-profiling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="instalación-y-configuración-de-servicios.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="benchmarking-y-ajuste-del-sistema-profiling.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

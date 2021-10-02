@@ -1,3 +1,127 @@
-# Methods
+# Monitorización y automatización  de tareas
 
-We describe our methods in this chapter.
+
+## Objetivos
+
+1. Conocer y saber usar las herramientas que permitan obtener datos sobre el sistema a nivel hardware y software (SO y servicios).
+2. Saber interpretar los resultados proporcionados por las aplicaciones de monitorización.
+3. Conocer los archivos que proporcionan información del sistema.
+4. Tener conocimiento básico sobre automatización y orquestación
+5. Ser capaz de utilizar y configurar un monitor de sistema
+
+## Introducción
+
+El guión de prácticas asociado a este documento contiene una información interesante, que además es materia <<de examen>> sobre los monitores disponibles, su clasificación, además de algunos temas muy interesantes sobre Automatización y Profiling del sistema. 
+
+En el presente documento nos centraremos en resolver las tareas evaluables propuestas para esta práctica: monitorización con Zabbix y automatización básica de tareas con Ansible. 
+
+
+## Sesión 1ª: Automatización básica de tareas con Ansible
+
+
+### Introducción a la orquestación con Ansible
+
+En el guión oficial de esta práctica se indicaban varias herramientas para la automatización de tareas. Una de ellas, que actúa a nivel de plataforma es Ansible. 
+
+Ansible es un software que automatiza el **aprovisionamiento** de *software*, la gestión de configuraciones y el despliegue de aplicaciones. Está categorizado como una herramienta de *orquestación*, muy útil para los administradores de sistema y DevOps^[DevOps es una metodología de desarrollo de *software* basada en la integración entre desarrolladores *software* y administradores de sistemas].
+
+En otras palabras, 
+
+> Ansible permite a los *DevOps* gestionar sus servidores, configuraciones y aplicaciones de forma sencilla, robusta y concurrente. 
+
+Además, gestiona nodos a través de SSH y no requiere ningún software remoto adicional (excepto Python 2.4 o posterior para instalarlo)".
+
+A modo de resumen, podemos decir que Ansible nos permite:
+- automatizar tareas,
+- provisionar, y
+- orquestar servicios (a esto nos dedicaremos a continuación).
+
+### Pruebas sobre nuestras máquinas virtuales
+
+Para realizar las pruebas podemos usar las dos máquinas virtuales que tenemos: Ubuntu y centOS. Basta con ejecutar los comandos en una máquina apropiadamente para que se ejecute en la otra, logrando la comunicación entre ambos.
+
+Para la prueba no hace falta  iniciar sesión en la máquina virtual que recibirá las órdenes de ejecución; sólo habrá que hacerlo donde vayamos a lanzar los comandos.
+
+#### Instalar Ansible en Ubuntu
+
+Vamos a instalar *Ansible* usando el gestor de paquetes *apt*:
+
+```{shell}
+sudo apt install ansible
+```
+
+####  Creación de grupos *receptores* de tareas: 
+
+En el fichero `/etc/ansible/hosts` se pueden definir los *receptores* y grupos de los mismos de las tareas que vayamos a lanzar con Ansible. 
+
+Para definir un grupo de destinos  basta con indicar un nombre de referencia entre corchetes, y debajo, en cada línea, el formato `IP:PUERTO` del host destino. Un formato válido para un grupo básico sería:
+
+```{shell}
+[UbuntuServer]
+192.168.56.105:22022
+[centOSServer]
+192.168.56.110:22022
+```
+
+en en el caso de que quisiéramos un grupo para cada servidor (un grupo para el servidor *Ubuntu* y otro grupo para el de *centOS*).
+
+#### Lanzar tareas desde Linux (anfitrión o máquina virtual) 
+
+Mandar la orden de hacer  `ping` a todos los grupos de servidores que hayamos definido en el fichero `/etc/ansible/hosts`:
+
+```{shell}
+ansible all -m ping  # all = mandar a todos los grupos
+```
+
+
+Es posible que nos dé un error, debido a problemas con la clave público-privada. Podemos solucionar este problema generando una clave con la orden 
+ 
+```{shell}
+ssh-keygen
+```
+
+
+y se generan las claves (pública y privada)^[Refresca los conocimientos sobre criptografía necesarios para las prácticas en el documento asociado a la Práctica 2.] en el fichero `.ssh/` (carpeta oculta en el directorio actual).
+
+Ahora nos falta enviar la clave a los destinatarios uno a uno con 
+ 
+```{shell}
+ssh-copy-id IP -p PUERTO
+```
+
+
+Si volvemos a ejecutar el comando `ansible`, puede que nos vuelva a dar un error relacionado con Python. Lo podemos solucionar instalándolo con:
+ 
+```{shell}
+sudo apt install python       # suponiendo que estamos en Ubuntu
+apt update                    # actualizar repositorios
+```
+
+
+Ahora volvemos a ejecutar el comando. 
+
+#### Lanzar tareas desde nuestra máquina nativa Windows
+Basta con ejecutar el comando:
+
+```{shell}
+ansible all -a "ls /" -m command
+```
+
+si queremos enviar esa orden a todos los grupos, o
+
+```{shell}
+ansible NOMBRE_GRUPO "ls /" -m command
+```
+
+
+
+## Sesión 2ª: Monitorización con *Zabbix*
+
+### Objetivos y presentación
+En esta sección se presenta un guión sobre la instalación y configuración del monitor Zabbix en Ubuntu y centOS, incluyendo un front-end para poder acceder a la monitorización a través de un navegador. El servidor Ubuntu será el protagonista de la coordinación de las tareas de monitorización de ambos sistemas operativos (a sí mismo y a centOS), de tal forma que:
+
+
+- En Ubuntu Server instalaremos el \textbf{agente} (tareas a “bajo nivel” de recopilación de datos), el \textit{front-end} (para la monitorización) y el \textbf{servidor} (que controla la monitorización de ambos servidores).
+- En centOS instalaremos únicamente el \textbf{agente}, para recopilar datos que serán luego usados y formateados por el servidor.
+
+

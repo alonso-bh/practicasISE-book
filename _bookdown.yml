@@ -1,5 +1,6 @@
-book_filename: "PracticasSO"
+book_filename: "PracticasISE"
 delete_merged_file: true
+rmd_files: ["index.Rmd", "01-instalserver.Rmd", "02-servicios.Rmd", "03-automatizacion.Rmd", "04-profiling.Rmd", "05-servidorespropositoespecifico.Rmd", "06-references.Rmd"  ]
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Capítulo "

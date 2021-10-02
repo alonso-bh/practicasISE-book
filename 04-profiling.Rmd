@@ -1,4 +1,4 @@
-# Applications
+# *Benchmarking* y ajuste del sistema (*profiling*)
 
 Some _significant_ applications are demonstrated in this chapter.
 
